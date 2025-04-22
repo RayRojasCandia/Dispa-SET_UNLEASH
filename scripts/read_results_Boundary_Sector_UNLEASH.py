@@ -20,7 +20,7 @@ import pandas as pd
 rng = pd.date_range(start='2023-10-01',end='2023-10-10',freq='h')
 
 # Generate country-specific plots
-ds.plot_zone(inputs,results,rng=rng)
+ds.plot_zone(inputs,results)
 
 # Bar plot with the installed capacities in all countries:
 cap = ds.plot_zone_capacities(inputs,results)
@@ -31,11 +31,5 @@ ds.plot_energy_zone_fuel(inputs,results,ds.get_indicators_powerplant(inputs,resu
 # Analyse the results for each country and provide quantitative indicators:
 r = ds.get_result_analysis(inputs,results)
 
-# Plot the reservoir levels
-#ds.storage_levels(inputs,results)
-#ds.plot_storage_levels(inputs,results,'NO')
-
-#ds.plot_power_flow_tracing_matrix(inputs, results)
-
-#ds.plot_net_flows_map(inputs,results)
-#ds.plot_line_congestion_map(inputs,results)
+# Test the new boundary sector dispatch plot
+ds.plot_dispatchX(inputs, results)
