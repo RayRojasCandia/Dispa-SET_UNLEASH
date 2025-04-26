@@ -46,7 +46,6 @@ WaterValue: ''
 CostLoadShedding: ''
 CostCurtailment: ''
 CostOfSpillage: ''
-CostNotServed: ''
 CostXNotServed: ''
 ValueOfLostLoad: ''
 PriceTransmission: ''
@@ -115,8 +114,6 @@ default:
   CostLoadShedding: 1500
   CostCurtailment: 20
   CostOfSpillage: 4
-  CostNotServed: ''
-  CostXNotServed: ''
   ValueOfLostLoad: 100000
   PriceTransmission: 0
   PriceOfGas: 44
