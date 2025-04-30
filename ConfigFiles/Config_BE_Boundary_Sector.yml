@@ -1,6 +1,6 @@
 Description: Main configuration file of the Unleash model for Belgium
 SimulationType: Standard
-SimulationDirectory: Simulations/simulation_(2)_BE-NUC
+SimulationDirectory: Simulations/(2)_BE_NUC_1
 StartDate: !!python/tuple
 - 2023
 - 1
@@ -10,8 +10,8 @@ StartDate: !!python/tuple
 - 0
 StopDate: !!python/tuple
 - 2023
-- 1
-- 15
+- 12
+- 31
 - 0
 - 0
 - 0
