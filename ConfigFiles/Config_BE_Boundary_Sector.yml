@@ -68,10 +68,10 @@ FFRLimit: ''
 FFRGainLimit: ''
 FrequencyStability: 'Off'
 SystemGainLimit: ''
-BoundarySectorData: Database/Boundary_Sector/BoundarySectorData/BE/2023.csv
+BoundarySectorData: Database/BoundarySector/BoundarySectorData/BE/2023.csv
 BoundarySectorNTC: ''
 BoundarySectorInterconnections: ''
-SectorXDemand: Database/Boundary_Sector/BoundarySectorDemand/BE/2023.csv
+SectorXDemand: Database/BoundarySector/BoundarySectorDemand/BE/2023.csv
 SectorXFlexibleDemand: ''
 SectorXFlexibleSupply: ''
 SectorXReservoirLevels: ''
