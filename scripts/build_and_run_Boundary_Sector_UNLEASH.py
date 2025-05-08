@@ -9,7 +9,7 @@ create a simulation environment folder and run the simulation in GAMS
 # Add the root folder of Dispa-SET to the path so that the library can be loaded:
 import sys,os
 sys.path.append(os.path.abspath('..'))
-os.environ['GAMSPATH'] = '/opt/gams/gams45.7_linux_x64_64_sfx/'
+#os.environ['GAMSPATH'] = '/opt/gams/gams45.7_linux_x64_64_sfx/'
 
 # Import Dispa-SET
 import dispaset as ds

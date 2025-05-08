@@ -1,6 +1,6 @@
 Description: Main configuration file of the Unleash model for Belgium
-SimulationType: Standard
-SimulationDirectory: Simulations/(2)_BE_NUC_1
+SimulationType: No clustering
+SimulationDirectory: Simulations/(2)_BE_NUC_2_No_Clustering
 StartDate: !!python/tuple
 - 2023
 - 1
