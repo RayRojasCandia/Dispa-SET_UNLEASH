@@ -1,2 +1,2 @@
 ,Sector,STOCapacity,STOSelfDischarge,STOMinSOC,MaxFlexDemand,MaxFlexSupply,CostXNotServed,STOMaxPower
-1,S_1,7543,0.00269,0.2,,,10000,1245
+1,S_1,7543,0.00269,0,,,10000,1245
