@@ -13,14 +13,14 @@ sys.path.append(os.path.abspath('..'))
 import dispaset as ds
 
 # Load the inputs and the results of the simulation
-inputs,results = ds.get_sim_results(path='../Simulations/(2)_BE_NUC_2_No_Clustering',cache=False)
+inputs,results = ds.get_sim_results(path='../Simulations/(2)_BE_NBG',cache=False)
 
 # if needed, define the plotting range for the dispatch plot:
 import pandas as pd
-rng = pd.date_range(start='2023-10-01',end='2023-10-10',freq='h')
+rng = pd.date_range(start='2023-01-01',end='2023-01-07',freq='h')
 
 # Generate country-specific plots
-ds.plot_zone(inputs,results)
+ds.plot_zone(inputs,results, z='BE',rng=rng)
 
 # Bar plot with the installed capacities in all countries:
 cap = ds.plot_zone_capacities(inputs,results)
