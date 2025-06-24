@@ -20,7 +20,7 @@ import pandas as pd
 rng = pd.date_range(start='2023-01-01',end='2023-01-07',freq='h')
 
 # Generate country-specific plots
-ds.plot_zone(inputs,results, z='BE',rng=rng)
+ds.plot_zone(inputs,results,z='BE',rng=rng)
 
 # Bar plot with the installed capacities in all countries:
 cap = ds.plot_zone_capacities(inputs,results)
