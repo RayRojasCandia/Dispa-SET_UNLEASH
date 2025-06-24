@@ -71,7 +71,7 @@ SystemGainLimit: ''
 BoundarySectorData: Database/Boundary_Sector/BoundarySectorData/BE/2023.csv
 BoundarySectorNTC: ''
 BoundarySectorInterconnections: ''
-SectorXDemand: Database/BoundarySector/Boundary_SectorDemand/BE/2023.csv
+SectorXDemand: Database/Boundary_Sector/BoundarySectorDemand/BE/2023.csv
 SectorXFlexibleDemand: ''
 SectorXFlexibleSupply: ''
 SectorXReservoirLevels: ''
