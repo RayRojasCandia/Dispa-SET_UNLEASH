@@ -28,7 +28,7 @@ ShareOfFlexibleDemand: ''
 DemandFlexibility: ''
 LoadShedding: ''
 PowerPlantData: Database/PowerPlants/##/2023.csv
-NTC: ''
+NTC: Database/NTC/1h/2023.csv
 Interconnections: Database/CrossBorderFlows/1h/2023.csv
 TransmissionGridType: NTC
 GridData: ''
@@ -87,13 +87,11 @@ zones:
 - BE
 - FR
 - NL
-- LU
 - DE
 all_zones:
 - BE
 - FR
 - NL
-- LU
 - DE
 ReserveParticipation:
 - COMC
