@@ -32,4 +32,4 @@ ds.plot_energy_zone_fuel(inputs,results,ds.get_indicators_powerplant(inputs,resu
 r = ds.get_result_analysis(inputs,results)
 
 # Test the new boundary sector dispatch plot
-ds.plot_dispatchX(inputs, results)
+ds.plot_dispatchX(inputs, results,rng=rng)

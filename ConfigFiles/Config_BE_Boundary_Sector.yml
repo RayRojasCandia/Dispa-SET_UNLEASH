@@ -1,6 +1,6 @@
 Description: Main configuration file of the Unleash model for Belgium
 SimulationType: Integer clustering
-SimulationDirectory: Simulations/(2)_BE_NBG
+SimulationDirectory: Simulations/(2)_BE_NBGx3.5
 StartDate: !!python/tuple
 - 2023
 - 1
@@ -28,7 +28,7 @@ ShareOfFlexibleDemand: ''
 DemandFlexibility: ''
 LoadShedding: ''
 PowerPlantData: Database/PowerPlants/##/2023.csv
-NTC: Database/NTC/1h/2023.csv
+NTC: ''
 Interconnections: Database/CrossBorderFlows/1h/2023.csv
 TransmissionGridType: NTC
 GridData: ''
@@ -80,8 +80,8 @@ BoundarySectorMaxSpillage: ''
 OptimalityGap: 0.0015
 modifiers:
   Demand: 1
-  Solar: 1
-  Wind: 1
+  Solar: 3.5
+  Wind: 3.5
   Storage: 1
 zones:
 - BE
