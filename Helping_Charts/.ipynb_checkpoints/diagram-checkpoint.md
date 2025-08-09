@@ -1,0 +1,26 @@
+ ```mermaid
+graph TB
+    Title["Dispa-SET <br>GAMS Model"]:::A
+    subgraph SG1[" "]
+        direction LR
+        A("Configuration<br>and<br>Solver Settings"):::C
+        B("Definition<br>of the<br>Dataset<br>-<br>related options"):::C
+        C("Definition<br>of<br>Sets and Parameters"):::C
+        D("Data<br>import"):::C
+        E("Definition<br>of<br>Variables"):::C
+        F("Assignment<br>of<br>Initial Values"):::C
+        G("Declaration<br>and<br>definition<br>of<br>Equations"):::C
+        H("Definition<br>of<br>Model"):::C
+        I("Solving<br>Loop"):::C
+        J("Result<br>Export"):::C
+        A --> B --> C --> D --> E --> F --> G --> H --> I --> J
+    end
+
+    Title --> SG1
+    
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:white,font-weight:bold,font-size:30px;
+classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:white;
+classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:white,font-weight:bold,font-size:25px
+classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:white,font-weight:bold,font-size:15px
+
+class SG1 B;
