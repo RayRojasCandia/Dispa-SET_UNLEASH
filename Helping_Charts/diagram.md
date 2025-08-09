@@ -18,7 +18,7 @@ graph TB
 
     Title --> SG1
     
-classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:white,font-weight:bold,font-size:60px;
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:white,font-weight:bold,font-size:30px;
 classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:white;
 classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:white,font-weight:bold,font-size:25px
 classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:white,font-weight:bold,font-size:15px
