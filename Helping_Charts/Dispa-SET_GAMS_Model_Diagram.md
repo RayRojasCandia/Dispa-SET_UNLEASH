@@ -1,3 +1,7 @@
+```python
+
+```
+
  ```mermaid
 graph TB
     Title["Dispa-SET <br>GAMS Model"]:::A
@@ -24,6 +28,9 @@ classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:white,font-weight:
 classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:white,font-weight:bold,font-size:15px
 
 class SG1 B;
+```
+
+```python
 
 ```
 
@@ -82,6 +89,11 @@ classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:b
 classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:10px
 
 class SG1 B;
+```
+
+
+```python
+
 ```
 
  ```mermaid
@@ -150,6 +162,11 @@ class CC B;
 linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28 color:#none,stroke:#none,stroke-width:1px;
 ```
 
+
+```python
+
+```
+
  ```mermaid
 graph TD
     Title(["Start<br>Definition of Sets and Parameters"]):::A
@@ -176,7 +193,7 @@ graph TD
     C6 --> C7[Boundary Sector Parameters]:::C
     
     %% Conditional MTS for Boundary Sector
-    C7 --> C8{%MTS% == 0?}:::C
+    C7 --> C8{MTS = 0?}:::C
     C8 -- Yes --> C9[SectorXStorageInitial]:::C
     C8 -- No --> C10[Storage & Charging Parameters]:::C
     C9 --> C10
@@ -185,13 +202,13 @@ graph TD
     C10 --> C11[Flexible Demand & Warm-Start Parameters]:::C
     
     %% Conditional RetrieveStatus
-    C11 --> C12{%RetrieveStatus% == 1?}:::C
+    C11 --> C12{RetrieveStatus<br>= 1?}:::C
     C12 -- Yes --> C13[CommittedCalc Parameters]:::C
     C12 -- No --> C14[Reserve & Frequency Parameters]:::C
     C13 --> C14
     
     %% Conditional MTS for Reserve
-    C14 --> C15{%MTS% == 0?}:::C
+    C14 --> C15{MTS = 0?}:::C
     C15 -- Yes --> C16[Frequency Parameters]:::C
     C15 -- No --> C17[Network Data Section]:::C
     C16 --> C17
@@ -203,7 +220,7 @@ graph TD
     C18 --> C19[Parameters Used Within Loop]:::C
     
     %% Conditional MTS for Loop Parameters
-    C19 --> C20{%MTS% == 0?}:::C
+    C19 --> C20{MTS = 0?}:::C
     C20 -- Yes --> C21[SectorXStorageFinalMin]:::C
     C20 -- No --> C22[Flexible Demand Parameters]:::C
     C21 --> C22
@@ -226,6 +243,11 @@ class CC B;
 
 %% Style the edge labels
 linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 color:#none,stroke:#none,stroke-width:1px;
+```
+
+
+```python
+
 ```
 
  ```mermaid
@@ -285,8 +307,13 @@ class CC B;
 linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 color:#none,stroke:#none,stroke-width:1px;
 ```
 
- ```mermaid
 
+
+```python
+
+```
+
+ ```mermaid
 flowchart TD
     E1([Start<br>Definitions of Variables]):::A
     E1 --> E3[Integer / Binary<br>Variables  ]:::C
@@ -431,6 +458,11 @@ class S4b D;
 linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73 color:#none,stroke:#none,stroke-width:1px;
 ```
 
+
+```python
+
+```
+
  ```mermaid
 flowchart TD
 
@@ -511,6 +543,11 @@ class S9 B;
 
 %% Style the edge labels
 linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30 color:#none,stroke:#none,stroke-width:1px;
+```
+
+
+```python
+
 ```
 
  ```mermaid
@@ -735,4 +772,105 @@ class S14 B;
 
 %% Style the edge labels
 linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45 color:#none,stroke:#none,stroke-width:1px;
+```
+
+```python
+
+```
+
+ ```mermaid
+flowchart TD
+    F1([Start<br>Definition of the Model]):::A --> F3["Hourly System Cost<br><br>EQ_SystemCost"]:::C
+    subgraph S0["Objective & Cost"]
+        F3 --> F4{"LP<br>Formulation =1?"}:::C
+        F4 -->|No| F5["Startup & Shutdown Costs<br><br>EQ_CostStartUp<br>EQ_CostShutDown"]:::C
+        F5 --> F6["Total Optimization Cost<br><br>EQ_Objective_function"]:::C
+        F4 -->|Yes| F6
+        F3 --> F7["Ramping Costs<br><br>EQ_CostRampUp<br>EQ_CostRampDown"]:::C
+        F7 --> F6
+    end
+
+    subgraph S1["Commitment Constraints"]
+        F6 --> F8["Unit Commitment<br>Ramp Rate Limits<br><br>EQ_Commitment<br>EQ_RampUp_TC<br>EQ_RampDown_TC"]:::C
+        F8 --> F9{"LP<br>Formulation =1?"}:::C
+        F9 -->|No| F10["Minimum Up & Down Time<br><br>EQ_MinUpTime<br>EQ_MinDownTime"]:::C
+        F10 --> F11
+        F9 -->|Yes| F11
+    end
+
+    subgraph S2["Power & Demand Balance"]
+        F11["Residual Load<br><br>EQ_Residual_Load"]:::C --> F12["Day-Ahead Demand Balance<br><br>EQ_Demand_balance_DA"]:::C
+        F12 --> F13{"LP<br>Formulation =1?"}:::C
+        F13 -->|No| F14["Must-Run Power<br><br>EQ_Power_must_run"]:::C
+        F14 --> F15
+        F13 -->|Yes| F15
+    end
+
+    subgraph S3["Flexible Demand & Boundary Sector"]
+        F15{Flexible Demand Active =1?}:::C --> |Yes| F16["Flexible Demand<br>Max Flexibility<br><br>EQ_Flexible_Demand<br>EQ_Flexible_Demand_Max"]:::C
+        F15 -->|No| F17["No Flexible Demand<br><br>EQ_No_Flexible_Demand"]:::C
+        F16 & F17 --> F18["Boundary Sector Flexibility<br>Max Power Consumption<br><br>EQ_Tot_Flex_Demand<br>EQ_Max_Flex_Demand<br>EQ_Max_Flex_Supply<br>EQ_Max_Power_Consumption_of_BS_units"]:::C
+    end
+
+    subgraph S4["Reserves & Curtailment"]
+        F18 --> F19["Spinning & Non-Spinning Reserve<br>Total Reserve Demand<br><br>EQ_Demand_balance_2U<br>EQ_Demand_balance_2D<br>EQ_Demand_balance_3U<br>EQ_Tot_Demand_2U"]:::C
+        F19 --> F20["Reserve Capability<br>VRES Curtailment<br><br>EQ_Reserve_2U_capability<br>EQ_Reserve_2D_capability<br>EQ_Reserve_3U_capability<br>EQ_Curtailed_Power"]:::C
+    end
+
+    subgraph S5["CHP & P2X Equations"]
+        F20 --> F21["CHP Operation Limits<br>Heat-to-Power Constraints<br><br>EQ_CHP_extraction_Pmax<br>EQ_CHP_extraction<br>EQ_CHP_backpressure<br>EQ_CHP_max_heat<br>EQ_2U_limit_chp<br>EQ_2D_limit_chp<br>EQ_3U_limit_chp"]:::C
+        F21 --> F22["P2X Power Balance<br>X2P Consumption<br>Max P2X Load<br><br>EQ_P2X_Power_Balance<br>EQ_X2P_Power_Consumption<br>EQ_Max_Power_Consumption"]:::C
+    end
+
+    subgraph S6["Storage & Boundary Storage"]
+        F22 --> F23["Storage Limits & Levels<br>Charge/Discharge Balance<br><br>EQ_Storage_minimum<br>EQ_Storage_alert<br>EQ_Storage_flood_control<br>EQ_Storage_level<br>EQ_Storage_input<br>EQ_Storage_balance<br>EQ_Storage_boundaries<br>EQ_Storage_MaxCharge<br>EQ_Storage_MaxDischarge"]:::C
+        F23 --> F24{"Rolling Horizon?<br>MTS =1?"}:::C
+        F24 -->|Yes| F25["Cyclic Storage (MTS)<br><br>EQ_Storage_Cyclic"]:::C
+        F25 --> F26
+        F24 -->|No| F26
+        F26["Boundary Sector Storage<br>Level, Charge & Discharge<br><br>EQ_Boundary_Sector_Storage_MaxDischarge<br>EQ_Boundary_Sector_Storage_MaxCharge<br>EQ_Boundary_Sector_Storage_PowerMax<br>EQ_Boundary_Sector_Storage_PowerMin<br>EQ_Boundary_Sector_Storage_minimum<br>EQ_Boundary_Sector_Storage_level<br>EQ_Boundary_Sector_Storage_alert<br>EQ_Boundary_Sector_Flood_Control<br>EQ_Boundary_Sector_Storage_balance<br>EQ_Boundary_Sector_Storage_boundaries"]:::C --> F27{"Rolling Horizon?<br>MTS =1?"}:::C
+        F27 -->|Yes| F28["Cyclic Boundary Storage<br><br>EQ_Boundary_Sector_Storage_Cyclic"]:::C
+        F28 --> F29
+        F27 -->|No| F29
+    end
+
+    subgraph S7["Network & Operational"]
+        F29["Power Availability<br>Load Shedding<br>Flow Limits<br>DC Power Flow<br><br>EQ_Power_available<br>EQ_LoadShedding<br>EQ_Flow_limits_lower<br>EQ_Flow_limits_upper<br>EQ_BS_Flow_limits_lower<br>EQ_BS_Flow_limits_upper<br>EQ_Total_Injected_Power<br>EQ_DC_Power_Flow"]:::C --> F30{"Use Prior Commitment?<br>RetrieveStatus =1?"}:::C
+        F30 -->|Yes| F31["Fixed Initial Commitment<br><br>EQ_CommittedCalc"]:::C
+        F31 --> F32
+        F30 -->|No| F32
+    end
+
+    subgraph S8["System Services (MTS = 0)"]
+        F32{"Frequency-Constrained Mode?<br>MTS =0?"}:::C -->|Yes| F33["Inertia & Frequency Response<br>Primary & FFR Reserves<br>Power Loss<br><br>EQ_SysInertia<br>EQ_Inertia_limit<br>EQ_SystemGain<br>EQ_SystemGain_limit<br>EQ_PrimaryReserve_Available<br>EQ_PrimaryReserve_Capability<br>EQ_PrimaryReserve_Boundary<br>EQ_Demand_balance_PrimaryReserve<br>EQ_FFRGain<br>EQ_FFRGain_limit<br>EQ_FFR_Available<br>EQ_FFR_Capability<br>EQ_FFR_Boundary<br>EQ_Demand_balance_FFR<br>EQ_PowerLoss"]:::C
+        F33 --> F34
+        F32 -->|No| F34
+    end
+
+    F34([Model Configuration]):::C --> F35([End]):::C
+
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:20px;
+classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:10px;
+classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:10px
+classDef D fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:10px
+
+class S0 B;
+class S1 B;
+class S2 B;
+class S3 B;
+class S4 B;
+class S5 B;
+class S6 B;
+class S7 B;
+class S8 B;
+class S9 B;
+class S10 B;
+class S11 B;
+class S12 B;
+class S13 B;
+class S14 B;
+
+%% Style the edge labels
+linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41 color:#none,stroke:#none,stroke-width:1px;
+
 ```
