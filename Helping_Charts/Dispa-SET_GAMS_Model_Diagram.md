@@ -872,5 +872,134 @@ class S14 B;
 
 %% Style the edge labels
 linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41 color:#none,stroke:#none,stroke-width:1px;
+```
+
+```python
 
 ```
+
+ ```mermaid
+flowchart TD
+    H1(["Start<br>Solving Loop"]):::A --> H2["Calculate Total Days<br><br>Calculate ndays<br/>ndays = floor(card(h)*TimeStep/24)"]:::C
+
+    subgraph SG1["Validation Phase"]
+        H2 --> H3{"Look Ahead<br>Too Long?<br><br>LookAhead<br>><br>ndays-1?"}:::C
+        H3 -->|Yes| H4["ABORT: Look ahead period<br>longer than simulation length"]:::C
+        H3 -->|No| H5{"Look Ahead Not Compatible with Time Step?<br><br>LookAhead*24 mod TimeStep ≠ 0?"}:::C
+        H5 -->|Yes| H6["Abort Execution:<br/>Time Step Mismatch<br><br>ABORT: Look ahead period not multiple of TimeStep"]:::C
+        H5 -->|No| H7{"Horizon Length Not Compatible with Time Step?<br><br>Length*24 mod TimeStep ≠ 0?"}:::C
+        H7 -->|Yes| H8["Abort Execution:<br/>Horizon Length Mismatch<br><br>ABORT: Rolling horizon length not multiple of TimeStep"]:::C
+        H7 -->|No| H9
+        H9["Initialize Loop Parameters and Display Configuration<br><br>• Set tmp = {model, solver}<br/>• Parameter status(tmp,h)<br/>• Scalar starttime<br/>• Set days, display parameters"]:::C
+    end
+
+    subgraph SG3["Rolling Horizon Optimization Loop"]
+        H10["Start Rolling Horizon Loop Through All Days<br><br>FOR day = 1 TO ndays-LookAhead BY RollingHorizon Length"]:::C
+        
+        subgraph SG3A["Time Window Setup"]
+            H11["Calculate Time Windows for Current Optimization<br><br>• FirstHour = (day-1)*24/TimeStep+1<br/>• LastHour = min(card(h), FirstHour + (Length+LookAhead)*24/TimeStep - 1)<br/>• LastKeptHour = LastHour - LookAhead*24/TimeStep"]:::C
+            H12["Set Current Optimization Horizon<br><br>• i(h) = no<br/>• i(h) = yes for FirstHour ≤ ord(h) ≤ LastHour<br/>• Display day, FirstHour, LastHour, LastKeptHour"]:::C
+        end
+        
+        subgraph SG3B["Storage Requirements Setup"]
+            H13["Define Storage Final Requirements<br><br>• StorageFinalMin(s) = sum(...)<br/>• StorageFinalMin(chp) = sum(...)"]:::C
+            H14{"Multi-Time Scale Mode Active?<br><br>MTS = 0?"}:::C
+            H15["Set Sector Storage Requirements<br><br>SectorXStorageFinalMin(nx) = sum(...)"]:::C
+        end
+        
+        subgraph SG3C["Model Solving"]
+
+            H17{"Linear Programming Formulation?<br><br>LPFormulation = 1?"}:::C --> |Yes| H18["Solve as Linear Program<br><br>SOLVE UCM_SIMPLE USING LP MINIMIZING SystemCostD"]:::C
+            H17 -->|No| H19["Solve as Mixed Integer Program<br><br>SOLVE UCM_SIMPLE USING MIP MINIMIZING SystemCostD"]:::C
+            H20["Record Solution Status Information<br><br>• status(model,i) = UCM_SIMPLE.Modelstat<br/>• status(solver,i) = UCM_SIMPLE.Solvestat"]:::C
+        end
+        
+        subgraph SG3D["Results Processing & State Updates"]
+            H21["Update Initial Conditions for Next Iteration<br><br>• CommittedInitial(au) = Committed.L at LastKeptHour<br/>• PowerInitial(u) = Power.L at LastKeptHour<br/>• StorageInitial(s,chp) = StorageLevel.L at LastKeptHour"]:::C
+            H22{"Multi-Time Scale Mode Active?<br><br>MTS = 0?"}:::C
+            H23["Update Sector Storage States<br><br>SectorXStorageInitial(nx) = SectorXStorageLevel.L at LastKeptHour"]:::C
+            H24["Update Flexible Demand States<br><br>• SectorXFlexDemandInputInitial(nx)<br/>• SectorXFlexSupplyInputInitial(nx)"]:::C
+            H25{"Flexible Demand Activated?<br><br>ActivateFlexibleDemand = 1?"}:::C
+            H26["Update Accumulated Oversupply Information<br><br>AccumulatedOverSupply_inital(n) = AccumulatedOverSupply.L at LastKeptHour"]:::C
+        end
+        
+        subgraph SG3E["Results Assignment & Error Calculation"]
+            H27["Assign Results to Hourly Arrays<br><br>• StorageSlack.L = Waterslack.L<br/>• StorageLevelViolation_H.L = StorageLevelViolation.L<br/>• SectorXStorageLevelViolation_H.L<br/>• ObjectiveFunction.L = SystemCostD.L"]:::C
+            H28["Calculate Total Error Metrics<br><br>Calculate Error.L = Σ(CostLoadShedding*ShedLoad.L + ValueOfLostLoad*(LL_MaxPower + LL_MinPower) + 0.8*ValueOfLostLoad*(LL_2U + LL_2D + LL_3U) + 0.7*ValueOfLostLoad*(LL_RampUp + LL_RampDown))"]:::C
+            H29["Calculate Optimality and Error Gaps<br><br>• OptimalityGap.L = objVal - objEst<br/>• OptimizationError.L = Error.L - OptimalityGap.L"]:::C
+        end
+        
+        subgraph SG3F["Loop Control"]
+            H30{"More Days to Process?<br><br>More days?"}:::C
+        end
+    end
+
+    subgraph SG4["Final Results"]
+        H31["Display All Final Results<br><br>PowerX.L, Flow.L, Power.L, Committed.L, ShedLoad.L, CurtailedPower.L, StorageLevel.L, SystemCost.L, LL_MaxPower.L, etc."]:::C
+        H32(["Loop Complete"]):::C
+    end
+
+
+    H32 --- H33(["End"]):::C
+    
+    %% Connections between subgraphs
+    H9 --> H10
+    H10 --> H11
+    H11 --> H12
+    H12 --> H13
+    H13 --> H14
+    H14 -->|Yes| H15
+    H14 -->|No| H17
+    H15 --> H17
+    H18 --> H20
+    H19 --> H20
+    H20 --> H21
+    H21 --> H22
+    H22 -->|Yes| H23
+    H22 -->|No| H24
+    H23 --> H24
+    H24 --> H25
+    H25 -->|Yes| H26
+    H25 -->|No| H27
+    H26 --> H27
+    H27 --> H28
+    H28 --> H29
+    H29 --> H30
+    H30 -->|Yes| H10
+    H30 -->|No| H31
+    H31 --> H32
+    
+    %% Error paths
+    H4 --> H33
+    H6 --> H33
+    H8 --> H33
+
+
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:10px;
+classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:10px
+classDef D fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:10px
+
+class SG1 B;
+class SG2 B;
+class SG3 B;
+class SG3A D;
+class SG3B D;
+class SG3C D;
+class SG3D D;
+class SG3E D;
+class SG3F D;
+class SG4 B;
+class SG5 B;
+class SG6 B;
+class SG7 B;
+class SG8 B;
+class SG9 B;
+class SG10 B;
+class SG11 B;
+class SG12 B;
+class SG13 B;
+class SG14 B;
+
+%% Style the edge labels
+linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38 color:#none,stroke:#none,stroke-width:1px;
