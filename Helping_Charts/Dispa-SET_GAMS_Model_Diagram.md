@@ -1003,3 +1003,265 @@ class SG14 B;
 
 %% Style the edge labels
 linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38 color:#none,stroke:#none,stroke-width:1px;
+```
+
+```python
+
+```
+
+ ```mermaid
+graph TB
+    %% General Structure of the Dispa-SET GAMS Model
+    %% Main Components
+    A([Start<br>Dispa-SET GAMS Model]):::A --> S1 --> S2 --> S3 --> S4 --> S4_5 --> S5 --> S6 --> S7 --> S8 --> S9 --> I([End]):::C
+
+    %% Model Title and Global Settings
+    direction LR
+    subgraph S1["Model Title and Global Settings"]
+        A1{{"Model Title and Global Settings"}}:::C --> |"Define"|A1_1["Title: UCM model"]:::C
+        A1 --> |"Set"|A1_2["Global Options"]:::C
+    end
+
+    %% Model Configuration Options
+    direction LR
+    subgraph S2["Model Configuration Options"]
+        A2{{"Model Configuration Options"}}:::C --> |"Define"|A2_1["Input File Name"]:::C
+        A2 --> |"Set"|A2_2["Formulation Type"]:::C
+        A2 --> |"Set"|A2_3["Retrieve Status"]:::C
+        A2 --> |"Set"|A2_4["Activate Flexible Demand"]:::C
+        A2 --> |"Set"|A2_5["Activate Advanced Reserves"]:::C
+        A2 --> |"Set"|A2_6["Frequency Constraints"]:::C
+    end
+
+    %% Set Definitions
+    direction LR
+    subgraph S3["Set Definitions"]
+        B{{"Set Definitions"}}:::C --> |"Define sets for"|B1["Markets"]:::C
+        B --> |"Define sets for"|B2["Units"]:::C
+        B --> |"Define sets for"|B3["Fuels"]:::C
+        B --> |"Define sets for"|B4["Technologies"]:::C
+        B --> |"Define sets for"|B5["Nodes"]:::C
+        B --> |"Define sets for"|B6["Lines"]:::C
+    end
+
+    %% Parameter Definitions
+    direction LR
+    subgraph S4["Parameter Definitions"]
+        C{{"Parameter Definitions"}}:::C --> |"Define parameters for"|C1["Operational Parameters"]:::C
+        C --> |"Define parameters for"|C2["Economic Parameters"]:::C
+        C --> |"Define parameters for"|C3["Storage Parameters"]:::C
+        C --> |"Define parameters for"|C4["Flexible Demand Parameters"]:::C
+    end
+
+    %% Data Import
+    direction LR
+    subgraph S4_5["Data Import"]
+        D4_5{{"Data Import"}}:::C --> |"Load from"|D4_5_1["$gdxin %inputfilename%"]:::C
+        
+        D4_5_1 --> |"Load sets"|D4_5_2["Core model dimensions (mk, n, nx, l, etc.)"]:::D
+        D4_5_1 --> |"Load parameters"|D4_5_3["Operational & economic inputs"]:::D
+        D4_5_1 --> |"Load conditional"|D4_5_4["Boundary sector parameters"]:::D
+        D4_5_1 --> |"Load conditional"|D4_5_5["Network data (PTDF)"]:::D
+        D4_5_1 --> |"Load conditional"|D4_5_6["Reserve & frequency parameters"]:::D
+    end
+
+    %% Variable Definitions
+    direction LR
+    subgraph S5["Variable Definitions"]
+        D{{"Variable Definitions"}}:::C --> |"Define variables for"|D1["Binary Variables"]:::C
+        D --> |"Define variables for"|D2["Continuous Variables"]:::C
+        D --> |"Define variables for"|D3["Positive Variables"]:::C
+    end
+
+    %% Equation Definitions
+    direction LR
+    subgraph S6["Equation Definitions"]
+        E{{"Equation Definitions"}}:::C --> |"Define equations for"|E1["Objective Function"]:::C
+        E --> |"Define equations for"|E2["Commitment Constraints"]:::C
+        E --> |"Define equations for"|E3["Ramp Constraints"]:::C
+        E --> |"Define equations for"|E4["Demand Balance Constraints"]:::C
+        E --> |"Define equations for"|E5["Storage Constraints"]:::C
+        E --> |"Define equations for"|E6["Reserve Constraints"]:::C
+    end
+
+    %% Model Definition
+    direction LR
+    subgraph S7["Model Definition"]
+        F{{"Model Definition"}}:::C --> |"Define model using"|F1["Model Declaration"]:::C
+        F --> |"Include equations in"|F2["Model Equations"]:::C
+    end
+
+    %% Solve Statement
+    direction LR
+    subgraph S8["Solve Statement"]
+        G{{"Solve Statement"}}:::C --> |"Solve model using"|G1["Solve Using LP / MIP"]:::C
+        G --> |"Set optimization options"|G2["Optimization Options"]:::C
+    end
+
+    %% Result Export
+    direction LR
+    subgraph S9["Result Export"]
+        H{{"Result Export"}}:::C --> |"Export results to"|H1["Export Results to GDX"]:::C
+        H --> |"Display results"|H2["Display Results"]:::C
+    end
+
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:25px;
+classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:20px;
+classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef E fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:16px;
+
+class S1 B;
+class S2 B;
+class S3 B;
+class S4 B;
+class S4_5 B;
+class S5 B;
+class S6 B;
+class S7 B;
+class S8 B;
+class S9 B;
+
+linkStyle default stroke:#none,color:#none,stroke-width:1px;
+```
+
+```python
+
+```
+
+ ```mermaid
+graph TB
+    %% Model Title and Global Settings
+    direction LR
+    subgraph S1["Model Title and Global Settings"]
+        A1{{"Model Title and Global Settings"}}:::C --> |"Define"|A1_1["Title: UCM model"]:::C
+
+        A1 --> |"Set"|A1_2["Global Options"]:::C
+        %% Global Options Details
+        A1_2 --> |"Set"|A1_2_1["Enable 16 parallel threads for computation<br><br>Option threads=16"]:::D
+        A1_2 --> |"Set"|A1_2_2["Set iteration limit to 1 billion<br><br>Option IterLim=1000000000"]:::D
+        A1_2 --> |"Set"|A1_2_3["Set resource limit to 10 billion units<br><br>Option ResLim=10000000000"]:::D
+        A1_2 --> |"Set"|A1_2_4["Use Gurobi as the optimization solver<br><br>Option solver=gurobi"]:::D
+        A1_2 --> |"Set"|A1_2_5["Minimize listing file output<br><br>Reduce .lst file size"]:::D
+
+            A1_2_5 ---> |"Turn off"|A1_2_5a["Disable input file listing in output<br><br>$$offlisting"]:::D
+            A1_2_5 ---> |"Turn off"|A1_2_5b["Disable log file generation<br><br>$offlog"]:::D
+            A1_2_5 ---> |"Turn off"|A1_2_5c["Disable symbol cross-reference listing<br><br>$offsymxref"]:::D
+            A1_2_5 ---> |"Turn off"|A1_2_5d["Disable symbol list in output<br><br>$offsymlist"]:::D
+
+        A1_2 --> |"Set"|A1_2_6["Display all equations without row limit<br><br>Option limrow=0"]:::D
+        A1_2 --> |"Set"|A1_2_7["Display all variables without column limit<br><br>Option limcol=0"]:::D
+        A1_2 --> |"Set"|A1_2_8["Disable solver solution output printing<br><br>Option solprint=off"]:::D
+        A1_2 --> |"Set"|A1_2_9["Disable solver system output printing<br><br>Option sysout=off"]:::D
+    end
+
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:25px;
+classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:20px;
+classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef E fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:16px;
+
+class S1 B;
+```
+
+```python
+
+```
+
+ ```mermaid
+graph TB
+    %% Model Configuration Options
+    direction LR
+    subgraph S2["Model Configuration Options"]
+        A2{{"Model Configuration Options"}}:::C --> |"Define"|A2_1["Specify input data file name<br><br>set InputFileName Inputs.gdx"]:::D
+        A2 --> |"Set"|A2_2["Choose formulation type (0=MIP, 1=LP)<br><br>setglobal LPFormulation 0"]:::D
+        A2 --> |"Set"|A2_3["Enable/disable status retrieval (0=No, 1=Yes)<br><br>setglobal RetrieveStatus 0"]:::D
+        A2 --> |"Set"|A2_4["Activate flexible demand equations (0=No, 1=Yes)<br><br>setglobal ActivateFlexibleDemand 1"]:::D
+        A2 --> |"Set"|A2_5["Activate advanced reserve demand (0=No, 1=Yes)<br><br>setglobal ActivateAdvancedReserves 0"]:::D
+        A2 --> |"Set"|A2_6["Enable frequency constrained UC/OD (0=No, 1=Yes)<br><br>setglobal FC 0"]:::D
+    end
+
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:25px;
+classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:20px;
+classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef E fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:16px;
+
+class S2 B;
+```
+
+```python
+
+```
+
+ ```mermaid
+graph TB
+    %% Set Definitions
+    direction LR
+    subgraph S3["Set Definitions"]
+        B{{"Set Definitions"}}:::C --> |"Markets"|B1["Represents different energy markets in the model<br><br>mk: Markets"]:::D
+
+        B --> |"Units"|B2["Various types of generation and storage units in the system<br><br>au: All Units<br>u(au): Generation units<br>chp(u): CHP units<br>p2x(au): Power to X<br>x2p(au): X to Power<br>xu(au): Boundary sector only units<br>s(au): Storage Units<br>th(au): Units with thermal storage<br>hu(au): Heat only units<br>cu(au): Conventional units only<br>ba(au): Batteries only"]:::D
+
+        B --> |"Fuels"|B3["Different fuel types used in power generation<br><br>f: Fuel types"]:::D
+
+        B --> |"Technologies"|B4["Classification of generation technologies by type<br><br>t: Generation technologies<br>tr(t): Renewable generation technologies<br>tc(t): Conventional technologies"]:::D
+
+        B --> |"Nodes"|B5["Network nodes including internal and boundary connections<br><br>n: Nodes<br>nx: Boundary sector nodes"]:::D
+
+        B --> |"Lines"|B6["Transmission network components and connections<br><br>l: Lines<br>l_int(l): Lines between internal zones<br>l_RoW(l): Lines to rest of the world<br>lx: Boundary sector lines<br>slx: Boundary sector spillage lines"]:::D
+
+        B --> |"Simulation"|B7["Time-related sets and special unit classifications<br><br>h: Hours<br>i(h): Subset of simulated hours<br>z(h): Subset of every simulated hour<br>wat(au): Hydro technologies"]:::D
+
+        B --> |"Aliases"|B8["Create shortcuts for easier set referencing throughout the model<br><br>Alias(mk,mkmk)<br>Alias(n,nn)<br>Alias(l,ll)<br>Alias(u,uu)<br>Alias(t,tt)<br>Alias(f,ff)<br>Alias(p,pp)<br>Alias(s,ss)<br>Alias(h,hh)<br>Alias(i,ii)"]:::D
+    end
+
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:25px;
+classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:20px;
+classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef E fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:16px;
+
+class S3 B;
+```
+
+```python
+
+```
+
+ ```mermaid
+graph TB
+    %% Set Definitions
+    direction LR
+    subgraph S3["Set Definitions"]
+        B{{"Set Definitions"}}:::C --> |"Markets"|B1["Represents different energy markets in the model<br><br>mk: Markets"]:::D
+
+        B --> |"Units"|B2["Various types of generation and storage units in the system<br><br>au: All Units<br>u(au): Generation units<br>chp(u): CHP units<br>p2x(au): Power to X<br>x2p(au): X to Power<br>xu(au): Boundary sector only units<br>s(au): Storage Units<br>th(au): Units with thermal storage<br>hu(au): Heat only units<br>cu(au): Conventional units only<br>ba(au): Batteries only"]:::D
+
+        B --> |"Fuels"|B3["Different fuel types used in power generation<br><br>f: Fuel types"]:::D
+
+        B --> |"Technologies"|B4["Classification of generation technologies by type<br><br>t: Generation technologies<br>tr(t): Renewable generation technologies<br>tc(t): Conventional technologies"]:::D
+
+        B --> |"Nodes"|B5["Network nodes including internal and boundary connections<br><br>n: Nodes<br>nx: Boundary sector nodes"]:::D
+
+        B --> |"Lines"|B6["Transmission network components and connections<br><br>l: Lines<br>l_int(l): Lines between internal zones<br>l_RoW(l): Lines to rest of the world<br>lx: Boundary sector lines<br>slx: Boundary sector spillage lines"]:::D
+
+        B --> |"Simulation"|B7["Time-related sets and special unit classifications<br><br>h: Hours<br>i(h): Subset of simulated hours<br>z(h): Subset of every simulated hour<br>wat(au): Hydro technologies"]:::D
+
+        B --> |"Aliases"|B8["Create shortcuts for easier set referencing throughout the model<br><br>Alias(mk,mkmk)<br>Alias(n,nn)<br>Alias(l,ll)<br>Alias(u,uu)<br>Alias(t,tt)<br>Alias(f,ff)<br>Alias(p,pp)<br>Alias(s,ss)<br>Alias(h,hh)<br>Alias(i,ii)"]:::D
+    end
+
+classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:25px;
+classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:20px;
+classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+classDef E fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:16px;
+
+class S3 B;
+```
+
+```python
+
+```
+
+ ```mermaid
