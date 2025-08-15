@@ -1231,33 +1231,101 @@ class S3 B;
 
  ```mermaid
 graph TB
-    %% Set Definitions
-    direction LR
-    subgraph S3["Set Definitions"]
-        B{{"Set Definitions"}}:::C --> |"Markets"|B1["Represents different energy markets in the model<br><br>mk: Markets"]:::D
 
-        B --> |"Units"|B2["Various types of generation and storage units in the system<br><br>au: All Units<br>u(au): Generation units<br>chp(u): CHP units<br>p2x(au): Power to X<br>x2p(au): X to Power<br>xu(au): Boundary sector only units<br>s(au): Storage Units<br>th(au): Units with thermal storage<br>hu(au): Heat only units<br>cu(au): Conventional units only<br>ba(au): Batteries only"]:::D
+ %% Parameter Definitions
+ direction LR
 
-        B --> |"Fuels"|B3["Different fuel types used in power generation<br><br>f: Fuel types"]:::D
+ subgraph S4["Parameter Definitions"]
+     
+     %% ================= POWER SECTOR =================
+     subgraph S4-1["Power Sector"]
+         %% --- Units/Operational Parameters ---
+         subgraph SC1[ ]
+         direction TB
+             C1-a["AvailabilityFactor(au,h)<br>CHPPowerLossFactor(u)<br>CHPPowerToHeat(u)<br>CHPMaxHeat(chp)<br>CHPType<br>CommittedInitial(au)<br>Config<br>Efficiency(au,h)<br>OutageFactor(au,h)<br>PartLoadMin(au)<br>PowerCapacity(au)<br>PowerInitial(au)<br>PowerMinStable(au)<br>RampDownMaximum(au)<br>RampShutDownMaximum(au)<br>RampStartUpMaximum(au)<br>RampStartUpMaximumH(au,h)<br>RampShutDownMaximumH(au,h)<br>RampUpMaximum(au)<br>Reserve(au)<br>Technology(au,t)<br>Location(au,n)<br>LocationX(au,nx)<br>TimeDownMinimum(au)<br>TimeUpMinimum(au)<br>Nunits(au)<br>K_QuickStart(n)<br>QuickStartPower(au,h)"]:::F
+             C1-b["$If %RetrieveStatus%==1<br><br><br>CommittedCalc(u,z)"]:::F
+         end
 
-        B --> |"Technologies"|B4["Classification of generation technologies by type<br><br>t: Generation technologies<br>tr(t): Renewable generation technologies<br>tc(t): Conventional technologies"]:::D
+         %% --- Economic Parameters ---
+         C2-a["CostFixed(au)<br>CostRampUp(au)<br>CostRampDown(au)<br>CostShutDown(au)<br>CostStartUp(au)<br>CostVariable(au,h)<br>CostOfSpillage(au,h)<br>CostWaterValue(au,h)<br>CostStorageAlert(au,h)<br>CostFloodControl(au,h)<br>CostLoadShedding(n,h)<br>CostCurtailment(n,h)<br>PriceTransmission(l,h)"]:::F
 
-        B --> |"Nodes"|B5["Network nodes including internal and boundary connections<br><br>n: Nodes<br>nx: Boundary sector nodes"]:::D
+         %% --- Storage Parameters ---
+         C3-a["StorageDischargeEfficiency(au)<br>StorageChargingCapacity(au)<br>StorageChargingEfficiency(au)<br>StorageSelfDischarge(au)<br>StorageInflow(au,h)<br>StorageOutflow(au,h)<br>StorageInitial(au)<br>StorageProfile(au,h)<br>StorageMinimum(au)<br>StorageAlertLevel(au,h)<br>StorageFloodControl(au,h)<br>StorageHours(au)<br>StorageFinalMin(au)"]:::F 
+         
+         %% --- Demand/Flexibility Parameters ---
+         C4-a["Demand(mk,n,h)<br>Curtailment(n)<br>LoadShedding(n,h)<br>MaxFlexDemand(n)<br>MaxOverSupply(n,h)<br>AccumulatedOverSupply_inital(n)"]:::F
 
-        B --> |"Lines"|B6["Transmission network components and connections<br><br>l: Lines<br>l_int(l): Lines between internal zones<br>l_RoW(l): Lines to rest of the world<br>lx: Boundary sector lines<br>slx: Boundary sector spillage lines"]:::D
+         %% --- Network Parameters ---
+         C6-a["FlowMaximum(l,h)<br>FlowMinimum(l,h)<br>FlowXMaximum(lx,h)<br>FlowXMinimum(lx,h)<br>LineNode(l,n)<br>LineXNode(lx,nx)<br>PTDF(l_int,n)"]:::F 
 
-        B --> |"Simulation"|B7["Time-related sets and special unit classifications<br><br>h: Hours<br>i(h): Subset of simulated hours<br>z(h): Subset of every simulated hour<br>wat(au): Hydro technologies"]:::D
+         %% --- Environmental Parameters ---
+         C7-a["EmissionMaximum(n,p)<br>EmissionRate(au,p)<br>Fuel(au,f)"]:::F
 
-        B --> |"Aliases"|B8["Create shortcuts for easier set referencing throughout the model<br><br>Alias(mk,mkmk)<br>Alias(n,nn)<br>Alias(l,ll)<br>Alias(u,uu)<br>Alias(t,tt)<br>Alias(f,ff)<br>Alias(p,pp)<br>Alias(s,ss)<br>Alias(h,hh)<br>Alias(i,ii)"]:::D
-    end
+         %% --- Reserve/Frequency Parameters ---
+         subgraph SC8[ ]
+             C8-b["$If %MTS% == 0<br><br><br>InertiaConstant(au)<br>InertiaLimit(h)<br>Droop(au)<br>SystemGainLimit(h)<br>FFRGainLimit(h)<br>PrimaryReserveLimit(h)<br>FFRLimit(h)"]:::F
+         end
 
-classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:25px;
-classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
-classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:20px;
-classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
-classDef E fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:16px;
+         %% --- Derived Parameters ---
+         C9-a["LoadMaximum(au,h)<br>PowerMustRun(au,h)"]:::F 
 
-class S3 B;
+         %% --- Scalars ---
+         C10-a["FirstHour<br>LastHour<br>LastKeptHour<br>day<br>ndays<br>failed<br>srp<br>nsrp<br>TimeStep<br>SystemFrequency<br>RoCoFMax<br>DeltaFrequencyMax<br>MaxPrimaryAllowed"]:::F 
+     end
+
+     %% ================= BOUNDARY SECTOR =================
+     subgraph S4-2["Boundary Sector"]
+         %% --- Storage Parameters ---
+         subgraph SC3X[ ]
+             C3X-a["SectorXStorageCapacity(nx)<br>SectorXStorageSelfDischarge(nx)<br>SectorXStorageHours(nx)<br>SectorXStorageMinimum(nx)<br>SectorXStoragePowerMax(nx)<br>SectorXStorageProfile(nx,h)<br>SectorXAlertLevel(nx,h)<br>SectorXFloodControl(nx,h)"]:::F
+             C3X-b["$If %MTS% == 0<br><br><br>SectorXStorageInitial(nx)<br>SectorXStorageFinalMin(nx)"]:::F
+         end
+
+         %% --- Economic Parameters ---
+         C2X-a["CostXStorageAlert(nx,h)<br>CostXFloodControl(nx,h)<br>CostXSpillage(slx,h)<br>CostXNotServed(nx,h)"]:::F  
+
+         %% --- Flexibility Parameters ---
+         C4X-a["SectorXFlexDemandInput(nx,h)<br>SectorXFlexDemandInputInitial(nx)<br>SectorXFlexMaxCapacity(nx)<br>SectorXFlexSupplyInput(nx,h)<br>SectorXFlexSupplyInputInitial(nx)<br>SectorXFlexMaxSupply(nx)"]:::F
+
+         %% --- Conversion/Demand Parameters ---
+         C5X-a["Power2XConversionMultiplier(nx,au,h)<br>SectorXDemand(nx,h)<br>X2PowerConversionMultiplier(nx,au,h)"]:::F
+
+         %% --- Spillage Parameters ---
+         C6X-a["SectorXSpillageNode(slx,nx)<br>SectorXMaximumSpillage(slx,h)"]:::F 
+     end
+
+     %% ================= CONNECTIONS =================
+     C02 ---> C2X-a
+     C --> |"Economic"|C02[Economic<br>&<br>Market Cost<br>Parameters]:::D --> C2-a
+     C --> |"Environmental"|C07[Environmental<br>&<br>Fuel]:::D --> C7-a
+     C --> |"Reserve & Frequency"|C08[Reserve<br>and<br>Frequency<br>Stability]:::D --> SC8
+     C --> |"Derived Parameters"|C09[Derived<br>Time-Dependent<br>Parameters]:::D --> C9-a
+     C --> |"Simulation Control"|C010[Scalars<br>&<br>Constants]:::D --> C10-a
+     C{{"Parameter Definitions"}}:::C --> |"Basic Operational"|C01[Units<br>Operational<br>Parameters]:::D --> SC1
+     C --> |"Flexible Demand"|C04[Flexible Demand<br>&<br>Curtailment]:::D --> C4-a
+     C04 ---> C4X-a
+     C03 ---> SC3X
+     C --> |"Storage & Charging"|C03[Storage<br>Parameters]:::D --> C3-a
+     C --> |"Network"|C06[Network<br>Topology<br>&<br>Limits]:::D --> C6-a
+     C06 ---> C6X-a
+     C --> |"Boundary Sector"|C05[Boundary<br>Sector<br>Parameters]:::D ---> C5X-a
+ end
+
+ %% Style Definitions
+ classDef A fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:25px;
+ classDef B fill:#004C99,stroke:#004C99,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+ classDef C fill:#003366,stroke:#003366,stroke-width:2px,color:none,font-weight:bold,font-size:20px;
+ classDef D fill:#003366,stroke:#003366,stroke-width:2px,color:#fff,font-weight:bold,font-size:15px;
+ classDef E fill:#004C99,stroke:#none,stroke-width:2px,color:none,font-weight:bold,font-size:15px;
+ classDef F fill:#003366,stroke:#003366,stroke-width:2px,color:#fff,font-weight:bold,font-size:10px;
+ classDef G fill:#004C99,stroke:#none,stroke-width:2px,color:#fff,font-weight:bold,font-size:10px,stroke-dasharray: 5 5;
+
+  class S4 B;
+  class S4-1 E;
+  class S4-2 E;
+  class SC1 G;
+  class SC8 G;
+  class SC3X G;
 ```
 
 ```python
