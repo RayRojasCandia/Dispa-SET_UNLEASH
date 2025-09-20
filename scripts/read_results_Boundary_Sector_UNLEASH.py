@@ -13,7 +13,7 @@ sys.path.append(os.path.abspath('..'))
 import dispaset as ds
 
 # Load the inputs and the results of the simulation
-inputs,results = ds.get_sim_results(path='../Simulations/Unleash_IntegerClustering/(2)_BE-NUC_IntegerClustering',cache=False)
+inputs,results = ds.get_sim_results(path='../Simulations/ES',cache=False)
 
 # if needed, define the plotting range for the dispatch plot:
 import pandas as pd

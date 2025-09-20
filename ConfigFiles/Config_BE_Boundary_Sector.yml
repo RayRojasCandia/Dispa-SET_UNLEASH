@@ -1,6 +1,6 @@
 Description: Main configuration file of the Unleash model for Belgium
 SimulationType: Integer clustering
-SimulationDirectory: Simulations/(2)_BE_NBGx3.5
+SimulationDirectory: Simulations/ES
 StartDate: !!python/tuple
 - 2023
 - 1
@@ -28,7 +28,7 @@ ShareOfFlexibleDemand: ''
 DemandFlexibility: ''
 LoadShedding: ''
 PowerPlantData: Database/PowerPlants/##/2023.csv
-NTC: Database/NTC/1h/2023.csv
+NTC: ''
 Interconnections: Database/CrossBorderFlows/1h/2023.csv
 TransmissionGridType: NTC
 GridData: ''
@@ -68,10 +68,10 @@ FFRLimit: ''
 FFRGainLimit: ''
 FrequencyStability: 'Off'
 SystemGainLimit: ''
-BoundarySectorData: Database/Boundary_Sector/BoundarySectorData/BE/2023.csv
+BoundarySectorData: ''
 BoundarySectorNTC: ''
 BoundarySectorInterconnections: ''
-SectorXDemand: Database/Boundary_Sector/BoundarySectorDemand/BE/2023.csv
+SectorXDemand: ''
 SectorXFlexibleDemand: ''
 SectorXFlexibleSupply: ''
 SectorXReservoirLevels: ''
@@ -84,15 +84,9 @@ modifiers:
   Wind: 3.5
   Storage: 1
 zones:
-- BE
-- FR
-- NL
-- DE
+- ES
 all_zones:
-- BE
-- FR
-- NL
-- DE
+- ES
 ReserveParticipation:
 - COMC
 - GTUR
