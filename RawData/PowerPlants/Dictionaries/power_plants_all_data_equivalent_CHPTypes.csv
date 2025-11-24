@@ -1,6 +1,6 @@
 Description,Dispaset_CHPType,Equivalent_CHPType_1,Equivalent_CHPType_2,Equivalent_CHPType_3,Equivalent_CHPType_4,Equivalent_CHPType_5,Equivalent_CHPType_6,Equivalent_CHPType_7,Equivalent_CHPType_8
-,extraction,-,-,-,-,-,-,-,-
-,back-pressure,-,-,-,-,-,-,-,-
-Power to heat,p2h,-,-,-,-,-,-,-,-
+Extraction Condensing Turbine; Can vary power/heat output flexibly,extraction,-,-,-,-,-,-,-,-
+Back-Pressure Turbine; Produces power and heat in a fixed ratio,back-pressure,links urban central gas CHP,links urban central gas CHP CC,links urban central solid biomass CHP,links urban central solid biomass CHP CC,-,-,-,-
+Power-to-Heat Unit; Converts electrical energy into heat,p2h,-,-,-,-,-,-,-,-
 ,,yes,-,-,-,-,-,-,-
 ,,no,-,-,-,-,-,-,-
