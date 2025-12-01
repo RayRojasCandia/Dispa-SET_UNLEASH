@@ -345,8 +345,8 @@ OIL,STUR,,,500,0.725,,,,,,,,,extraction
 OIL,STUR,,,50,0.725,,,,,,,,,extraction
 NUC,STUR,Pressurized water reactor,,750,0.355,87,26,5.125,5.125,,,0.35,6,
 NUC,STUR,Pressurized water reactor,,749.9999999999,0.355,87,26,5.125,5.125,,,0.35,6,
-NUC,STUR,Boiling water reactor),,750,0.33,87,26,5.125,5.125,,,0.4,6,
-NUC,STUR,Boiling water reactor),,749.9999999999,0.33,87,26,5.125,5.125,,,0.4,6,
+NUC,STUR,Boiling water reactor,,750,0.33,87,26,5.125,5.125,,,0.4,6,
+NUC,STUR,Boiling water reactor,,749.9999999999,0.33,87,26,5.125,5.125,,,0.4,6,
 BIO,STUR,,,,0.35,,,5.125,5.125,,,0.3,,
 BIO,STUR,,,,,,,,,,,0.3,,back-pressure
 BIO,STUR,,,,,,,,,,,0.3,,extraction
