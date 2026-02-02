@@ -1,4 +1,4 @@
-Unnamed: 0,Unit,PowerCapacity,Nunits,Zone,Zone_th,Zone_h2,Technology,Fuel,Efficiency,MinUpTime,MinDownTime,RampUpRate,RampDownRate,StartUpCost,NoLoadCost_pu,RampingCost,PartLoadMin,MinEfficiency,StartUpTime,CO2Intensity,CHPType,CHPPowerToHeat,CHPPowerLossFactor,CHPMaxHeat,COP,Tnominal,coef_COP_a,coef_COP_b,STOCapacity,STOSelfDischarge,STOMaxChargingPower,STOChargingEfficiency,WaterWithdrawal,WaterConsumption,Status,Source,Company,Lat,Lon,Lat/Lon
+Unnamed: 0,Unit,PowerCapacity,Nunits,Zone,Zone_th,Zone_h2,Technology,Fuel,Efficiency,MinUpTime,MinDownTime,RampUpRate,RampDownRate,StartUpCost,NoLoadCost_pu,RampingCost,PartLoadMin,MinEfficiency,StartUpTime,CO2Intensity,CHPType,CHPPowerToHeat,CHPPowerLossFactor,CHPMaxHeat,COP,Tnominal,coef_COP_a,coef_COP_b,STOCapacity,STOSelfDischarge,STOMaxChargingPower,STOChargingEfficiency,WaterWithdrawal,WaterConsumption,Sector1,EfficiencySector1,ChargingEfficiencySector1,Sector2,EfficiencySector2,ChargingEfficiencySector2
 ,LAVRIO4,550.0,1.0,EL,,,COMC,GAS,0.525,5.0,1.0,0.0190289608,0.0190289608,112542.12,,0.0,0.4,0.525,1.0,0.45,,,,,,,,,,,,,,,,,,,,
 ,KOMOTINI,476.0,1.0,EL,,,COMC,GAS,0.55,5.0,1.0,0.024495614,0.024495614,112542.12,,0.0,0.4,0.525,1.0,0.45,,,,,,,,,,,,,,,,,,,,
 ,KREMASTA,437.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.2013422819,0.2013422819,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,316887.4285714285,,,,,,,,,,,
@@ -14,7 +14,7 @@ Unnamed: 0,Unit,PowerCapacity,Nunits,Zone,Zone_th,Zone_h2,Technology,Fuel,Effici
 ,ALOUMINIO,334.0,1.0,EL,,,COMC,GAS,0.57,2.0,4.0,0.03,0.03,,0.0,0.0,0.36,0.57,1.0,0.42,,,,,,,,,,,,,,,,,,,,
 ,KASTRAKI,320.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.2941176471,0.2941176471,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,25000.0,,,,,,,,,,,
 ,SFIKIA,315.0,1.0,EL,,,HPHS,WAT,0.86,0.0,0.0,0.9375,0.9375,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,1320.0,,,,,,,,,,,
-,POURNARI1,300.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.303030303,0.303030303,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,217542.85714285713,,,,,,,,,,,
+,POURNARI1,300.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.303030303,0.303030303,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,217542.85714285716,,,,,,,,,,,
 ,MELITI,289.0,1.0,EL,,,STUR,LIG,0.3701,6.0,6.0,0.010380623,0.01384083,60000.0,,0.0,0.522491349,0.3401,6.0,0.94,,,,,,,,,,,,,,,,,,,,
 ,AG_DIMITRIOS4,283.0,1.0,EL,,,STUR,LIG,0.3588,6.0,6.0,0.010600707,0.014134276,60000.0,,0.0,0.54770318,0.3297,6.0,1.34,,,,,,,,,,,,,,,,,,,,
 ,AG_DIMITRIOS3,283.0,1.0,EL,,,STUR,LIG,0.3588,6.0,6.0,0.010600707,0.014134276,60000.0,,0.0,0.54770318,0.3297,6.0,1.34,,,,,,,,,,,,,,,,,,,,
@@ -25,9 +25,9 @@ Unnamed: 0,Unit,PowerCapacity,Nunits,Zone,Zone_th,Zone_h2,Technology,Fuel,Effici
 ,ILARIONAS,154.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.5660377358,0.5660377358,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,72000.0,,,,,,,,,,,
 ,STRATOS1,150.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.5660377358,0.5660377358,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,1000.0,,,,,,,,,,,
 ,PLASTIRAS,130.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.6818181818,0.6818181818,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,392000.0,,,,,,,,,,,
-,THESAVROS1,128.0,1.0,EL,,,HPHS,WAT,0.86,0.0,0.0,2.5,2.5,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,92818.28571428571,,,,,,,,,,,
-,THESAVROS2,128.0,1.0,EL,,,HPHS,WAT,0.86,0.0,0.0,2.5,2.5,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,92818.28571428571,,,,,,,,,,,
-,THESAVROS3,128.0,1.0,EL,,,HPHS,WAT,0.86,0.0,0.0,2.5,2.5,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,92818.28571428571,,,,,,,,,,,
+,THESAVROS1,128.0,1.0,EL,,,HPHS,WAT,0.86,0.0,0.0,2.5,2.5,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,92818.28571428572,,,,,,,,,,,
+,THESAVROS2,128.0,1.0,EL,,,HPHS,WAT,0.86,0.0,0.0,2.5,2.5,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,92818.28571428572,,,,,,,,,,,
+,THESAVROS3,128.0,1.0,EL,,,HPHS,WAT,0.86,0.0,0.0,2.5,2.5,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,92818.28571428572,,,,,,,,,,,
 ,PLATANOVRYSI,116.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.775862069,0.775862069,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,11000.0,,,,,,,,,,,
 ,ASOMATA,108.0,1.0,EL,,,HDAM,WAT,0.85,0.0,0.0,0.8411214953,0.8411214953,0.0,,0.0,0.0,0.85,0.3,0.0,,,,,,,,,1000.0,,,,,,,,,,,
 ,LADONAS,70.0,1.0,EL,,,HDAM,WAT,1.0,0.0,0.0,1.0,1.0,0.0,,0.0,0.0,0.5,1.0,0.0,,,,,,,,,25000.0,,,,,,,,,,,

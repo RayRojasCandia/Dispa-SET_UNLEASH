@@ -15,7 +15,7 @@ os.environ['GAMSPATH'] = '/opt/gams/gams45.7_linux_x64_64_sfx/'
 import dispaset as ds
 
 # Load the configuration file
-config = ds.load_config('../ConfigFiles/Config_BE_Boundary_Sector.yml')
+config = ds.load_config('../ConfigFiles/Config_PyPSA_DispaSET_Power.yml')
 
 # Build the simulation environment:
 SimData = ds.build_simulation(config)

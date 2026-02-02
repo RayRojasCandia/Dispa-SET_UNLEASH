@@ -1,4 +1,4 @@
-Unnamed: 0,Unit,PowerCapacity,Nunits,Zone,Zone_th,Zone_h2,Technology,Fuel,Efficiency,MinUpTime,MinDownTime,RampUpRate,RampDownRate,StartUpCost,NoLoadCost_pu,RampingCost,PartLoadMin,MinEfficiency,StartUpTime,CO2Intensity,CHPType,CHPPowerToHeat,CHPPowerLossFactor,CHPMaxHeat,COP,Tnominal,coef_COP_a,coef_COP_b,STOCapacity,STOSelfDischarge,STOMaxChargingPower,STOChargingEfficiency,WaterWithdrawal,WaterConsumption,Status,Source,Company,Lat,Lon,Lat/Lon
+Unnamed: 0,Unit,PowerCapacity,Nunits,Zone,Zone_th,Zone_h2,Technology,Fuel,Efficiency,MinUpTime,MinDownTime,RampUpRate,RampDownRate,StartUpCost,NoLoadCost_pu,RampingCost,PartLoadMin,MinEfficiency,StartUpTime,CO2Intensity,CHPType,CHPPowerToHeat,CHPPowerLossFactor,CHPMaxHeat,COP,Tnominal,coef_COP_a,coef_COP_b,STOCapacity,STOSelfDischarge,STOMaxChargingPower,STOChargingEfficiency,WaterWithdrawal,WaterConsumption,Sector1,EfficiencySector1,ChargingEfficiencySector1,Sector2,EfficiencySector2,ChargingEfficiencySector2
 ,KW Boxberg,2470.0,1.0,DE,,,STUR,LIG,0.385,8.0,6.0,0.0020128824,0.0020128824,136849.915,,0.0,0.3,0.385,7.0,1.0,,,,,,,,,,,,,,,,,,,,
 ,KW Jänschwalde,2998.0,1.0,DE,,,STUR,LIG,0.385,8.0,6.0,0.0016666667,0.0016666667,136849.915,,0.0,0.3,0.385,7.0,1.0,,,,,,,,,,,,,,,,,,,,
 ,KW Lippendorf,1782.0,1.0,DE,,,STUR,LIG,0.385,8.0,6.0,0.0028058361,0.0028058361,136849.915,,0.0,0.3,0.385,7.0,1.0,,,,,,,,,,,,,,,,,,,,
@@ -30,7 +30,7 @@ Unnamed: 0,Unit,PowerCapacity,Nunits,Zone,Zone_th,Zone_h2,Technology,Fuel,Effici
 ,Neurath,4212.0,1.0,DE,,,STUR,LIG,0.385,8.0,6.0,0.0011964585,0.0011964585,136849.915,,0.0,0.3,0.385,7.0,1.0,,,,,,,,,,,,,,,,,,,,
 ,Emsland,1820.0,1.0,DE,,,COMC,GAS,0.525,5.0,1.0,0.0061373626,0.0061373626,112542.12,,0.0,0.4,0.525,1.0,0.45,,,,,,,,,,,,,,,,,,,,
 ,Vianden,1294.0,1.0,DE,,,HPHS,WAT,0.86,0.0,0.0,0.2323780015,0.2323780015,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,4191.492393212405,,,,,,,,,,,
-,Schluchsee,870.0,1.0,DE,,,HPHS,WAT,0.86,0.0,0.0,0.3448275862,0.3448275862,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,2818.0822118197775,,,,,,,,,,,
+,Schluchsee,870.0,1.0,DE,,,HPHS,WAT,0.86,0.0,0.0,0.3448275862,0.3448275862,0.0,,0.0,0.0,0.86,0.3,0.0,,,,,,,,,2818.082211819777,,,,,,,,,,,
 ,HKW Niehl,866.0,1.0,DE,,,COMC,GAS,0.525,5.0,1.0,0.0128983834,0.0128983834,112542.12,,0.0,0.4,0.525,1.0,0.45,,,,,,,,,,,,,,,,,,,,
 ,KW Hamm-Uentrop,850.0,1.0,DE,,,COMC,GAS,0.525,5.0,1.0,0.013297619,0.013297619,112542.12,,0.0,0.4,0.525,1.0,0.45,,,,,,,,,,,,,,,,,,,,
 ,Kraftwerk Lausward,400.0,1.0,DE,,,COMC,GAS,0.525,5.0,1.0,0.027925,0.027925,112542.12,,0.0,0.4,0.525,1.0,0.45,,,,,,,,,,,,,,,,,,,,
