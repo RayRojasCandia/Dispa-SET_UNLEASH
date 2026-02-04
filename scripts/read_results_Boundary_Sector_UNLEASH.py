@@ -13,14 +13,14 @@ sys.path.append(os.path.abspath('..'))
 import dispaset as ds
 
 # Load the inputs and the results of the simulation
-inputs,results = ds.get_sim_results(path='../Simulations/ES',cache=False)
+inputs,results = ds.get_sim_results(path='../Simulations/PyPSA_ DispaSET_Unleash/Reference/Sect_Power_2030',cache=False)
 
 # if needed, define the plotting range for the dispatch plot:
 import pandas as pd
-rng = pd.date_range(start='2023-01-01',end='2023-01-07',freq='h')
+rng = pd.date_range(start='2030-01-01',end='2030-01-07',freq='h')
 
 # Generate country-specific plots
-ds.plot_zone(inputs,results,z='BE',rng=rng)
+ds.plot_zone(inputs,results,z='DE',rng=rng)
 
 # Bar plot with the installed capacities in all countries:
 cap = ds.plot_zone_capacities(inputs,results)
