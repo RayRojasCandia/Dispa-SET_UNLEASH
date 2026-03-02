@@ -1,6 +1,6 @@
-Description: PyPSA - DispaSET Unleash Sector Power
+Description: PyPSA - DispaSET Unleash Sector Power and Hot Water VPP as Sector X
 SimulationType: Integer clustering
-SimulationDirectory: Simulations/PyPSA_ DispaSET_Unleash/Sufficiency/Sect_Power_2030_aux
+SimulationDirectory: Simulations/PyPSA_ DispaSET_Unleash/Sufficiency/Sect_Power_VPP_2030_1.2SOLAR
 StartDate: !!python/tuple
 - 2030
 - 1
@@ -10,7 +10,7 @@ StartDate: !!python/tuple
 - 0
 StopDate: !!python/tuple
 - 2030
-- 1
+- 12
 - 31
 - 0
 - 0
@@ -21,25 +21,25 @@ HorizonLength: 3
 LookAhead: 1
 AllowCurtailment: 1
 GAMS_folder: ''
-Demand: Database_PyPSA/Sufficiency_Scenario/Load_RealTime/##/1h/2030.csv
-RenewablesAF: Database_PyPSA/Sufficiency_Scenario/AvailabilityFactors/##/1h/2030.csv
+Demand: Database_PyPSA/Sufficiency_Scenario________VPP/Load_RealTime/##/1h/2030.csv
+RenewablesAF: Database_PyPSA/Sufficiency_Scenario________VPP/AvailabilityFactors/##/1h/2030.csv
 Outages: ''
 ShareOfFlexibleDemand: ''
 DemandFlexibility: ''
 LoadShedding: ''
-PowerPlantData: Database_PyPSA/Sufficiency_Scenario/PowerPlants/##/2030.csv
-NTC: Database_PyPSA/Sufficiency_Scenario/NTC/1h/2030.csv
-Interconnections: Database_PyPSA/Sufficiency_Scenario/CrossBorderFlows/1h/2030.csv
+PowerPlantData: Database_PyPSA/Sufficiency_Scenario________VPP/PowerPlants/##/2030.csv
+NTC: Database_PyPSA/Sufficiency_Scenario________VPP/NTC/1h/2030.csv
+Interconnections: Database_PyPSA/Sufficiency_Scenario________VPP/CrossBorderFlows/1h/2030.csv
 TransmissionGridType: NTC
 GridData: ''
 GeoData: ''
 HydroScheduling: 'Off'
 HydroSchedulingHorizon: Annual
 InitialFinalReservoirLevel: 1
-ReservoirLevels: Database_PyPSA/Sufficiency_Scenario/HydroData/ReservoirLevel/##/1h/2030.csv
+ReservoirLevels: Database_PyPSA/Sufficiency_Scenario________VPP/HydroData/ReservoirLevel/##/1h/2030.csv
 ReservoirLevelInitial: ''
 ReservoirLevelFinal: ''
-ReservoirScaledInflows: Database_PyPSA/Sufficiency_Scenario/HydroData/ScaledInflows/##/1h/2030.csv
+ReservoirScaledInflows: Database_PyPSA/Sufficiency_Scenario________VPP/HydroData/ScaledInflows/##/1h/2030.csv
 StorageAlertLevels: ''
 StorageFloodControl: ''
 WaterValue: ''
@@ -68,10 +68,10 @@ FFRLimit: ''
 FFRGainLimit: ''
 FrequencyStability: 'Off'
 SystemGainLimit: ''
-BoundarySectorData: ''
+BoundarySectorData: Database_PyPSA/Sufficiency_Scenario________VPP/VPP_data/VPP_features/BE/2030.csv
 BoundarySectorNTC: ''
 BoundarySectorInterconnections: ''
-SectorXDemand: ''
+SectorXDemand: Database_PyPSA/Sufficiency_Scenario________VPP/VPP_data/VPP_demand/BE/2030.csv
 SectorXFlexibleDemand: ''
 SectorXFlexibleSupply: ''
 SectorXReservoirLevels: ''
@@ -80,7 +80,7 @@ BoundarySectorMaxSpillage: ''
 OptimalityGap: 0.0015
 modifiers:
   Demand: 1
-  Solar: 1
+  Solar: 1.2
   Wind: 1
   Storage: 1
 zones:
