@@ -13,7 +13,7 @@ sys.path.append(os.path.abspath('..'))
 import dispaset as ds
 
 # Load the inputs and the results of the simulation
-inputs,results = ds.get_sim_results(path='../Simulations/Simulation_3/Reference/Sect_Power_VPP_2030_3',cache=False)
+inputs,results = ds.get_sim_results(path='../Simulations/PyPSA_ DispaSET_Unleash/Reference/Sect_Power_VPP_2030',cache=False)
 
 # if needed, define the plotting range for the dispatch plot:
 import pandas as pd

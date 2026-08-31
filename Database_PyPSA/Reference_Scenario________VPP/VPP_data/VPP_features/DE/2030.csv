@@ -1,0 +1,2 @@
+Unnamed: 0,Sector,STOCapacity,STOSelfDischarge,STOMinSOC,MaxFlexDemand,MaxFlexSupply,CostXNotServed,STOMaxPower
+,DHW_VPP,113093.48331466956,0.005674574127014506,0.2,,,10000,19005.575551963528
